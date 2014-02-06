@@ -1,8 +1,10 @@
 var express = require('express');
+var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var app = express();
+app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'))
 app.engine('handlebars', handlebars())
 app.set('view engine', 'handlebars')
@@ -36,5 +38,6 @@ app.get('/clip', function(req, res) {
 	res.render('clip')
 });
 
-app.listen(3000);
-console.log('Listening on port 3000')
+http.createServer(app).listen(app.get('port'), function(){
+  console.log('Express server listening on port ' + app.get('port'));
+});
