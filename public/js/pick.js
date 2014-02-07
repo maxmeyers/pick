@@ -14,4 +14,8 @@ function initializePage() {
 	$('button.get-started').click(function(event) {
 		document.location = "/start";
 	});
+
+	$('button.done-watching').click(function(event) {
+		document.location = "/rate?movie=juno";
+	});
 }

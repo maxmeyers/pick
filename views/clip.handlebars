@@ -15,10 +15,33 @@
 
 <body>
 	<div class="container">
-	<video controls autoplay>
-		<source src="http://trailers.apple.com/movies/fox_searchlight/juno/juno_h480p.mov" type="video/mp4">
-	</video>
+		<video controls autoplay>
+			<source src="http://trailers.apple.com/movies/fox_searchlight/juno/juno_h480p.mov" type="video/mp4">
+		</video>
 	</div>
 
+	<div class="container">
+		<button class="btn btn-default done-watching">Next</button>
+		<div class="detail">
+			<h3>Title</h3>
+			<h4>{{title}}</h4>
+		</div>
+
+		<div class="detail">
+			<h3>Director</h3>
+			<h4>{{director}}</h4>
+		</div>
+
+		<div class="detail">
+			<h3>Genre</h3>
+			<h4>{{genre}}</h4>
+		</div>
+
+		<div class="detail">
+			<h3>Year</h3>
+			<h4>{{year}}</h4>
+		</div>
+
+	</div>
 </body>
 </html>

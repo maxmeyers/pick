@@ -35,8 +35,21 @@ app.post('/start', function(req, res) {
 });
 
 app.get('/clip', function(req, res) {
-	res.render('clip')
+	res.render('clip', {
+		'title': 'Juno',
+		'director': 'Jason Reitman',
+		'genre': 'Comedy',
+		'year': '2007'
+	})
 });
+
+app.get('/rate', function(req, res) {
+	res.render('rate')
+})
+
+app.get('/done', function(req, res) {
+	res.render('done')
+})
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
