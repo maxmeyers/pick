@@ -3,6 +3,8 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 
+var clip = require('./routes/clip.js')
+
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'))
@@ -34,17 +36,10 @@ app.post('/start', function(req, res) {
 	res.redirect('/clip')
 });
 
-app.get('/clip', function(req, res) {
-	res.render('clip', {
-		'title': 'Juno',
-		'director': 'Jason Reitman',
-		'genre': 'Comedy',
-		'year': '2007'
-	})
-});
+app.get('/clip', clip.test);
 
 app.get('/rate', function(req, res) {
-	res.render('rate')
+	res.redirect('/clip')
 })
 
 app.get('/done', function(req, res) {

@@ -16,6 +16,8 @@ function initializePage() {
 	});
 
 	$('button.done-watching').click(function(event) {
-		document.location = "/rate?movie=juno";
+		document.location = "/rate?title=juno&rating="+event.target.id;
 	});
+
 }
+
