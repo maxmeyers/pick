@@ -4,6 +4,7 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var clip = require('./routes/clip.js')
+var rate = require('./routes/rate.js')
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -38,9 +39,7 @@ app.post('/start', function(req, res) {
 
 app.get('/clip', clip.test);
 
-app.get('/rate', function(req, res) {
-	res.redirect('/clip')
-})
+app.get('/rate', rate.rate)
 
 app.get('/done', function(req, res) {
 	res.render('done')
