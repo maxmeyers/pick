@@ -42,7 +42,8 @@ exports.test = function(req, res) {
 							'director': movie['director'],
 							'year': movie['year'],
 							'youtube_id': id,
-							'movie_id': movie_id
+							'movie_id': movie_id,
+							'image': 'http://icons.iconarchive.com/icons/visualpharm/ios7v2/48/Movie-Genres-Comedy-icon.png'
 						})
 					});
 				});
