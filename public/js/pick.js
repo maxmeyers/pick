@@ -20,5 +20,8 @@ function initializePage() {
 		document.location = "/rate?movie_id="+movie_id+"&rating="+event.target.id;
 	});
 
+	$('button.redirect-movie').click(function(event){
+		window.location = "http://www.netflix.com/";
+	});
 }
 
