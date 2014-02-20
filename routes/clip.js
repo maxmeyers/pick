@@ -7,19 +7,10 @@ exports.test = function(req, res) {
 	index = Math.floor(Math.random()*comedy.length)
 	movie = comedy[index];
 
-	rest.getJSON({
-		host: 'api-test.filmaster.tv',
-		path: '/rest/1.0/user/picktest/recommendations/',
-		auth: 'test_imdb:test', 
-	}, function(status, result) {
-		var objects = result.objects;
-		index = Math.floor(Math.random()*objects.length)
-		var movie = objects[index]
-
-		console.log(movie);
+	function getClip(film_id) {
 		rest.getJSON( {
 			host: 'api-test.filmaster.tv',
-			path:	movie['film_uri'],
+			path:	'/rest/1.0/film/'+film_id+'/',
 			auth: 'test_imdb:test', 
 		}, function(status, result) {
 			var title = result['title']
@@ -35,7 +26,8 @@ exports.test = function(req, res) {
 			}, function (error, result, body) {
 				console.log(body)
 
-				encoded_title = encodeURIComponent(title);
+				encoded_title = encodeURIComponent(title + ' trailer');
+				console.log('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+encoded_title+'+trailer&key=AIzaSyAbHW3PwwDloBV8nQfX2pWrX-MXaX3sg78')
 				https.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q='+encoded_title+'+trailer&key=AIzaSyAbHW3PwwDloBV8nQfX2pWrX-MXaX3sg78',
 					function(response) {
 						var output = '';
@@ -50,8 +42,6 @@ exports.test = function(req, res) {
 
 							res.render('clip', {
 								'title': title,
-								'director': movie['director'],
-								'year': movie['year'],
 								'youtube_id': id,
 								'movie_id': movie_id,
                 'image': 'http://icons.iconarchive.com/icons/visualpharm/ios7v2/48/Movie-Genres-Comedy-icon.png'
@@ -59,15 +49,24 @@ exports.test = function(req, res) {
 						});
 					});
 			});
-
-
-
-
 		});
-	})
+	}
 
+	console.log('ID: ' +req.query['film_id'])
+	if (req.query['film_id']) {
+		getClip(req.query['film_id'])
+	} else {
+		rest.getJSON({
+			host: 'api-test.filmaster.tv',
+			path: '/rest/1.0/user/picktest/recommendations/',
+			auth: 'test_imdb:test', 
+		}, function(status, result) {
+			var objects = result.objects;
+			index = Math.floor(Math.random()*objects.length)
+			var movie = objects[index]
 
-
-
-
+			console.log(movie);
+			getClip(movie['film_id'])
+		})		
+	}
 }

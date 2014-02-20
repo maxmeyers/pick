@@ -1,3 +1,37 @@
-{{#each ratings}}
-<p>{{title}}: {{rating}}</p>
-{{/each}}
+<!doctype html>
+
+<html>
+<head>
+	<title>My Ratings</title>	
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+	<link href="/css/pick.css" rel = "stylesheet">
+	<script src="js/jquery-1.11.0.js"></script>
+	<script src="js/pick.js"></script>
+	<script src="js/bootstrap.min.js"></script>      
+</head>
+
+<body>
+	<div class="container">
+		<div class="detail">
+			<h1>Current Ratings</h1>
+		</div>
+	{{#each ratings}}
+		<div class="container">
+			<h3><a href="/clip?film_id={{film_id}}">{{title}}</a></h3>
+			<button class="btn btn-default re-rate" id="1.{{film_id}}">{{star 1 film_id}}</button>
+			<button class="btn btn-default re-rate" id="2.{{film_id}}">{{star 2 film_id}}</button>
+			<button class="btn btn-default re-rate" id="3.{{film_id}}">{{star 3 film_id}}</button>
+			<button class="btn btn-default re-rate" id="4.{{film_id}}">{{star 4 film_id}}</button>
+			<button class="btn btn-default re-rate" id="5.{{film_id}}">{{star 5 film_id}}</button>
+
+		</div>
+	{{/each}}
+	</ul>
+	</div>
+</body>
+</html>
+
+

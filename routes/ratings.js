@@ -1,6 +1,5 @@
 var request = require('request')
 
-
 exports.ratings = function (req, res) {
 	request({
 		'uri':'http://api-test.filmaster.tv/rest/1.0/user/picktest/ratings/',
@@ -23,6 +22,7 @@ exports.ratings = function (req, res) {
 				if (rating['rating']) {
 					count = count+1;
 					ratings_dict[id] = rating;
+					rating['rating'] = Math.ceil(rating['rating'] / 2.0)
 				} else {
 					ratings_dict[id] = false;
 				}
@@ -43,14 +43,33 @@ exports.ratings = function (req, res) {
 					if (rating) {
 						ratings.push({
 							'title': rating['title'],
-							'rating': Math.ceil(rating['rating'] / 2.0),
+							'rating': rating['rating'],
+							'film_id': rating['film_id']
 						})						
 					}
 
 				}
 
+				ratings.sort(function(a,b) {
+					return a.title > (b.title);
+				});
+
 				res.render('ratings', {
-					'ratings':ratings
+					'ratings':ratings,
+					'helpers': {
+						'star': function(numstars, id) {
+							var str = '';
+							console.log(numstars)
+							for (var i = 0; i < numstars; i++) {
+								if (numstars == ratings_dict[id]['rating']) {
+									str += '★'
+								} else {
+									str += '☆'
+								}
+							}
+							return str
+						}
+					}
 				});
 			}
 		}
@@ -58,7 +77,6 @@ exports.ratings = function (req, res) {
 		for (var film_id in ratings_dict) {
 			var rating = ratings_dict[film_id];
 			if (rating) {
-				console.log(rating)
 				request({
 					'uri':'http://api-test.filmaster.tv'+rating['film_uri'],
 					'auth': {
@@ -68,8 +86,5 @@ exports.ratings = function (req, res) {
 				}, movieCallback);			
 			}
 		};
-
-
-
 	});
 }
