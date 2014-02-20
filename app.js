@@ -5,6 +5,7 @@ var handlebars = require('express3-handlebars')
 
 var clip = require('./routes/clip.js')
 var rate = require('./routes/rate.js')
+var ratings = require('./routes/ratings.js')
 
 var app = express();
 app.set('port', process.env.PORT || 3000);
@@ -44,6 +45,8 @@ app.get('/rate', rate.rate)
 app.get('/done', function(req, res) {
 	res.render('done')
 })
+
+app.get('/ratings', ratings.ratings);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
