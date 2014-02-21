@@ -28,43 +28,28 @@
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
-			<h1>Let's Get Started.</h1>
+			<h2>Register for Pick</h2>
 		</div>
 
-		<div>
-			<form role="form" action="start" method="post">
-<!-- 				<div class="form-group">
-					<label for="user_count">Number of Users</label>
-					<select class="form-control" name="user_count">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-					</select>
-				</div> -->
+		<div class="container">
+			{{#if error}}
+				<p style="color:red">{{error}}</p>
+			{{/if}}
 
-				<div class="form-group">
-					<label for="genres">Genre</label>
-					<div>
-						<select class="form-control" name="genre">
-							<option value="action">Action</option>
-							<option value="adventure">Adventure</option>
-							<option value="comedy">Comedy</option>
-							<!-- <option value="documentary">Documentary</option> -->
-							<option value="drama">Drama</option>
-							<option value="fantasy">Fantasy</option>
-							<option value="horror">Horror</option>
-							<option value="romance">Romance</option>
-							<option value="scifi">Sci-Fi</option>
-							<option value="thriller">Thriller</option>
-						</select>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<input class="btn btn-default" type="submit"/>
-				</div>
+			<form action="/register" method="POST">
+				<label>Username</label>
+				<input type="text" name="username">
+				<br>
+				<label>Password</label>
+				<input type="password" name="password">
+				<br>
+				<label>Confirm Password</label>
+				<input type="password" name="password-confirm">
+				<br>
+				<button class="btn btn-default">Register</button>
 			</form>
+
+			<h3><a href="/login">Click here to login.</a></h3>
 		</div>
 
 	</div>

@@ -10,7 +10,8 @@
 	<link href="/css/pick.css" rel = "stylesheet">
 	<script src="js/jquery-1.11.0.js"></script>
 	<script src="js/pick.js"></script>
-	<script src="js/bootstrap.min.js"></script>      
+	<script src="js/clip.js"></script>
+	<script src="js/bootstrap.min.js"></script>     
 </head>
 
 <body>
@@ -23,8 +24,9 @@
 		<button class="btn btn-default done-watching" id="4">★★★★</button>
 		<button class="btn btn-default done-watching" id="5">★★★★★</button>
 	</div>
+
 	<div class="container" style="text-align:center;">
-		<button class="btn btn-default done-watching" id="0">Skip</button>
+		{{#if random}}<button class="btn btn-default done-watching" id="0">Skip</button>{{/if}}
 		<button class="btn btn-default see-ratings" id="0">Ratings</button>
 	</div>
 
@@ -35,17 +37,22 @@
 
 		<div class="detail">
 			<h3>Actors</h3>
-			<h4>{{director}}</h4>
+			<h4 id="actors"></h4>
 		</div>
 
 		<div class="detail">
 			<h3>Year</h3>
-			<h4>{{year}}</h4>
+			<h4 id="year"></h4>
 		</div>
 
 		<div class="detail">
-			<img src="{{image}}" alt="genre" class="img">
+			<h3>Director</h3>
+			<h4 id="director"></h4>
 		</div>
+
+<!-- 		<div class="detail">
+			<img src="{{image}}" alt="genre" class="img">
+		</div> -->
 
 		<div class = "detail">
 			<h3> </h3>
@@ -53,5 +60,6 @@
 		<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
 
 	</div>
+	<script src="http://omdbapi.com/?i=tt{{movie_id}}&callback=movielookup"></script>
 </body>
 </html>

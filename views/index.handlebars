@@ -25,10 +25,14 @@
  			<p>Pick helps you find a movie to watch with your friends and family. </p>
  			<p style="color:white"> Watch movie trailers and rate them as Pick's intelligent deduction system guides you to the one that's just right!</p>
 		</div>
-			<button class ="get-started btn btn-default">Use as Guest</button>
-			<br>
-			<br>
-			<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="false"></div>
+			{{#if username}}
+			<h2>You are logged in as {{username}}. <a href="/clip">Start watching clips!</a></h2>
+			{{else}}
+				<button class ="login btn btn-default">Login</button>
+				<br/>
+				<br/>
+				<button class ="register btn btn-default">Register</button>
+			{{/if}}
 	</div>
 
 </body>

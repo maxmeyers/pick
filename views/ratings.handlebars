@@ -21,6 +21,7 @@
 	{{#each ratings}}
 		<div class="container">
 			<h3><a href="/clip?film_id={{film_id}}">{{title}}</a></h3>
+			<button class="btn btn-default re-rate" id="0.{{film_id}}">Clear</button>
 			<button class="btn btn-default re-rate" id="1.{{film_id}}">{{star 1 film_id}}</button>
 			<button class="btn btn-default re-rate" id="2.{{film_id}}">{{star 2 film_id}}</button>
 			<button class="btn btn-default re-rate" id="3.{{film_id}}">{{star 3 film_id}}</button>
@@ -28,8 +29,13 @@
 			<button class="btn btn-default re-rate" id="5.{{film_id}}">{{star 5 film_id}}</button>
 
 		</div>
+	{{else}}
+		<p>You don't have any ratings yet! <a href="/start">Get started.</a></p>
 	{{/each}}
-	</ul>
+	</div>
+	<br><br>
+	<div class="container">
+		<button class="btn btn-default logout">Logout</button>	
 	</div>
 </body>
 </html>

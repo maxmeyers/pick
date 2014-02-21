@@ -1,16 +1,22 @@
 var request = require('request')
 
 exports.ratings = function (req, res) {
+	if (!req.session['uid']) {
+		res.redirect('/login?redirect=\/ratings');
+		return;
+	}
+
 	request({
-		'uri':'http://api-test.filmaster.tv/rest/1.0/user/picktest/ratings/',
+		'uri':'http://api-test.filmaster.tv/rest/1.0/user/'+req.session['uid']+'/ratings/',
 		'auth': {
 			'user': 'test_imdb',
 			'pass': 'test'
 		},
 	}, function (err, result, body) {
 		var ratings = JSON.parse(body)['objects'];
-		var ratings_dict = {};
+		
 
+		var ratings_dict = {};
 		var count = 0;
 		var received = 0;
 
@@ -27,9 +33,12 @@ exports.ratings = function (req, res) {
 					ratings_dict[id] = false;
 				}
 			}
-		};
+		}
 
-		// res.send(ratings_dict)
+		if (!count) {
+			res.render('ratings');
+			return;
+		}
 
 		function movieCallback (err, result, body) {
 			received = received + 1;

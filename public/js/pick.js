@@ -11,9 +11,13 @@ $(document).ready(function() {
 function initializePage() {
 	console.log("Javascript connected!");
 
-	$('button.get-started').click(function(event) {
-		document.location = "/start";
+	$('button.login').click(function(event) {
+		document.location = "/login";
 	});
+
+	$('button.register').click(function(event) {
+		document.location = "/register";
+	})
 
 	$('button.done-watching').click(function(event) {
 		var movie_id = $('#movie_id').attr("value");
@@ -35,5 +39,9 @@ function initializePage() {
 
 		document.location = "/rate?movie_id="+movie_id+"&rating="+rating+"&redirect=\/ratings"
 	});
+
+	$('button.logout').click(function(event) {
+		window.location = "/logout"
+	})
 }
 
