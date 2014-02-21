@@ -15,3 +15,9 @@ label{
   color:#4EC6DE;
   
 }
+.detail img{
+  float: right;
+}
+iframe{
+  height: 180px;
+}
