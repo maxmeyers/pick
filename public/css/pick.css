@@ -21,3 +21,18 @@ label{
 iframe{
   height: 180px;
 }
+.btn-default {
+  background-color: hsl(207, 97%, 20%) !important; 
+  background-repeat: repeat-x; filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#013764", endColorstr="#013764"); 
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#013764), to(#013764)); 
+  background-image: -moz-linear-gradient(top, #013764, #013764); 
+  background-image: -ms-linear-gradient(top, #013764, #013764); 
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #013764), color-stop(100%, #013764)); 
+  background-image: -webkit-linear-gradient(top, #013764, #013764); 
+  background-image: -o-linear-gradient(top, #013764, #013764); 
+  background-image: linear-gradient(#013764, #013764); 
+  border-color: #013764 #013764 hsl(207, 97%, 20%); 
+  color: #fff !important; 
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00); 
+  -webkit-font-smoothing: antialiased;
+} 
