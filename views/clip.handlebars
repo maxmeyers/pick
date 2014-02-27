@@ -16,6 +16,10 @@
 
 <body>
 	<input type="hidden" id="movie_id" value="{{movie_id}}">
+	<div class="jumbotron">
+		<h4>Current Genres: {{genres}} <a href="/start">Edit</a></h4>
+	</div>
+
 	<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0" frameborder="0" allowfullscreen></iframe>
 	<div class="container">
 		<button class="btn btn-default done-watching" id="1">★</button>
@@ -26,14 +30,16 @@
 	</div>
 
 	<div class="container" style="text-align:center;">
-		{{#if random}}<button class="btn btn-default done-watching" id="0">Skip</button>{{/if}}
+		<button class="btn btn-default done-watching" id="0">Skip</button>
 		<button class="btn btn-default see-ratings" id="0">Ratings</button>
 	</div>
 
 	<div class="container">
 		<div class="detail">
 			<h1>{{title}}</h1>
+			{{#if explain}}{{{explain}}}{{/if}}
 		</div>
+
 
 		<div class="detail">
 			<h3>Actors</h3>
@@ -50,9 +56,10 @@
 			<h4 id="director"></h4>
 		</div>
 
-<!-- 		<div class="detail">
-			<img src="{{image}}" alt="genre" class="img">
-		</div> -->
+		<div class="detail">
+			<h3>Genres</h3>
+			<h4 id="genres"></h4>
+		</div>
 
 		<div class = "detail">
 			<h3> </h3>

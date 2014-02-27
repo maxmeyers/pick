@@ -33,36 +33,17 @@
 
 		<div>
 			<form role="form" action="start" method="post">
-<!-- 				<div class="form-group">
-					<label for="user_count">Number of Users</label>
-					<select class="form-control" name="user_count">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-					</select>
-				</div> -->
-
 				<div class="form-group">
 					<label for="genres">Genre</label>
 					<div>
-						<select class="form-control" name="genre">
-							<option value="action">Action</option>
-							<option value="adventure">Adventure</option>
-							<option value="comedy">Comedy</option>
-							<!-- <option value="documentary">Documentary</option> -->
-							<option value="drama">Drama</option>
-							<option value="fantasy">Fantasy</option>
-							<option value="horror">Horror</option>
-							<option value="romance">Romance</option>
-							<option value="scifi">Sci-Fi</option>
-							<option value="thriller">Thriller</option>
-						</select>
+						{{#each genres}}
+						<input type="checkbox" name="{{key}}" {{#if checked}}checked{{/if}}>  {{name}}</input><br/>
+						{{/each}}
 					</div>
 				</div>
 
 				<div class="form-group">
-					<input class="btn btn-default" type="submit"/>
+					<input class="btn btn-default" type="submit" value="Save and Watch Clips!"/>
 				</div>
 			</form>
 		</div>

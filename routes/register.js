@@ -28,7 +28,8 @@ exports.doRegister = function (req, res) {
 			} else {
 				var user = new models.User({
 					'username':username,
-					'password':password
+					'password':password,
+					'genres':[]
 				})
 				user.save(function(error) {
 					if (error) {
