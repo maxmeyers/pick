@@ -26,7 +26,7 @@ exports.test = function(req, res) {
 		} else {
 			rest.getJSON({
 				host: 'api-test.filmaster.tv',
-				path: '/rest/1.0/user/'+user.id+'/recommendations/',
+				path: '/rest/1.0/user/'+user.id+'/to-rate/',
 				auth: 'test_imdb:test', 
 			}, function(status, result) {
 				var objects = result.objects;
