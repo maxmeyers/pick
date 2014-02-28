@@ -26,13 +26,15 @@ exports.ratings = function (req, res) {
 			for (var i = 0; i < ratings.length; i++) {
 				var rating = ratings[i]
 				var id = rating['film_id']
-				if (!ratings_dict.hasOwnProperty(id)) {
-					if (rating['rating']) {
-						count = count+1;
-						ratings_dict[id] = rating;
-						rating['rating'] = Math.ceil(rating['rating'] / 2.0)
-					} else {
-						ratings_dict[id] = false;
+				if (id != 'undefined') {
+					if (!ratings_dict.hasOwnProperty(id)) {
+						if (rating['rating']) {
+							count = count+1;
+							ratings_dict[id] = rating;
+							rating['rating'] = Math.ceil(rating['rating'] / 2.0)
+						} else {
+							ratings_dict[id] = false;
+						}
 					}
 				}
 			}
@@ -48,8 +50,10 @@ exports.ratings = function (req, res) {
 
 			function movieCallback (err, result, body) {
 				received = received + 1;
+				var movie_id = result.request.uri.href.split('=tt')[1]
 				var movie = JSON.parse(body)
-				ratings_dict[movie['id']]['title'] = movie['title']
+				console.log(movie_id)
+				ratings_dict[movie_id]['title'] = movie['Title']
 
 				if (received == count) {
 					var ratings = [];
@@ -70,11 +74,10 @@ exports.ratings = function (req, res) {
 					});
 
 					res.render('ratings', {
-						'ratings':ratings,
+						'film_ratings':ratings,
 						'helpers': {
 							'star': function(numstars, id) {
 								var str = '';
-								console.log(numstars)
 								for (var i = 0; i < numstars; i++) {
 									if (numstars == ratings_dict[id]['rating']) {
 										str += '★'
@@ -95,12 +98,9 @@ exports.ratings = function (req, res) {
 			for (var film_id in ratings_dict) {
 				var rating = ratings_dict[film_id];
 				if (rating) {
+					console.log("film_id " + film_id)
 					request({
-						'uri':'http://api-test.filmaster.tv'+rating['film_uri'],
-						'auth': {
-							'user': 'test_imdb',
-							'pass': 'test'
-						},
+						'uri':'http://omdbapi.com/?i=tt'+film_id,
 					}, movieCallback);			
 				}
 			};
