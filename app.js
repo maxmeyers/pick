@@ -54,6 +54,7 @@ app.get('/register', register.register);
 app.post('/register', register.doRegister);
 
 app.get('/clip', clip.test);
+app.get('/alt', clip.alt);
 
 app.get('/rate', rate.rate)
 

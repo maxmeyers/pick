@@ -6,11 +6,21 @@ var mongoose = require("mongoose")
 var request = require('request')
 var util = require('../util')
 
-exports.test = function(req, res) {
+exports.alt = function(req, res) {
+	req['alt'] = true;
+	clip(req, res);
+}
+
+var clip = function(req, res) {
 	if (!req.session['uid']) {
 		res.redirect('/login')
 		return;
 	}
+
+	if (!req.hasOwnProperty('alt')) {
+		req['alt'] = false;
+	}
+
 	var user;
 	var genreString;
 	util.getCurrentUser(req, function(u) {
@@ -150,7 +160,8 @@ exports.test = function(req, res) {
 	                'explain': explain,
 	                'clip': true,
 	                'title': 'Clip -- '+title,
-	                'username': user.username
+	                'username': user.username,
+	                'alt': req['alt']
 								})
 							})
 						});
@@ -158,3 +169,5 @@ exports.test = function(req, res) {
 		});
 	}
 }
+
+exports.test = clip;
