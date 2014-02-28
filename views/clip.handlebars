@@ -1,72 +1,45 @@
-<!doctype html>
+<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0" frameborder="0" allowfullscreen></iframe>
+	<button class="btn btn-default done-watching" id="1">★</button>
+	<button class="btn btn-default done-watching" id="2">★★</button>
+	<button class="btn btn-default done-watching" id="3">★★★</button>
+	<button class="btn btn-default done-watching" id="4">★★★★</button>
+	<button class="btn btn-default done-watching" id="5">★★★★★</button>
 
-<html>
-<head>
-	<title>Clip - {{title}}</title>	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/pick.css" rel = "stylesheet">
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/pick.js"></script>
+<div class="container" style="text-align:center; padding-top:25px;">
+	<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
+	<button class="btn btn-default done-watching" id="0">Skip</button>
+	<button class="btn btn-default see-ratings" id="0">Ratings</button>
+</div>
+
+<div class="container">
+	<div class="detail">
+		<h1>{{movie_title}}</h1>
+		{{#if explain}}{{{explain}}}{{/if}}
+	</div>
+
+
+	<div class="detail">
+		<h3>Actors</h3>
+		<h4 id="actors"></h4>
+	</div>
+
+	<div class="detail">
+		<h3>Year</h3>
+		<h4 id="year"></h4>
+	</div>
+
+	<div class="detail">
+		<h3>Director</h3>
+		<h4 id="director"></h4>
+	</div>
+
+	<div class="detail">
+		<h3>Genres</h3>
+		<h4 id="genres"></h4>
+	</div>
+
+	<div class = "detail">
+		<h3> </h3>
+	</div>
 	<script src="js/clip.js"></script>
-	<script src="js/bootstrap.min.js"></script>     
-</head>
-
-<body>
-	<input type="hidden" id="movie_id" value="{{movie_id}}">
-	<div class="jumbotron">
-		<h4>Current Genres: {{genres}} <a href="/start">Edit</a></h4>
-	</div>
-
-	<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0" frameborder="0" allowfullscreen></iframe>
-	<div class="container">
-		<button class="btn btn-default done-watching" id="1">★</button>
-		<button class="btn btn-default done-watching" id="2">★★</button>
-		<button class="btn btn-default done-watching" id="3">★★★</button>
-		<button class="btn btn-default done-watching" id="4">★★★★</button>
-		<button class="btn btn-default done-watching" id="5">★★★★★</button>
-	</div>
-
-	<div class="container" style="text-align:center;">
-		<button class="btn btn-default done-watching" id="0">Skip</button>
-		<button class="btn btn-default see-ratings" id="0">Ratings</button>
-	</div>
-
-	<div class="container">
-		<div class="detail">
-			<h1>{{title}}</h1>
-			{{#if explain}}{{{explain}}}{{/if}}
-		</div>
-
-
-		<div class="detail">
-			<h3>Actors</h3>
-			<h4 id="actors"></h4>
-		</div>
-
-		<div class="detail">
-			<h3>Year</h3>
-			<h4 id="year"></h4>
-		</div>
-
-		<div class="detail">
-			<h3>Director</h3>
-			<h4 id="director"></h4>
-		</div>
-
-		<div class="detail">
-			<h3>Genres</h3>
-			<h4 id="genres"></h4>
-		</div>
-
-		<div class = "detail">
-			<h3> </h3>
-		</div>
-		<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
-
-	</div>
 	<script src="http://omdbapi.com/?i=tt{{movie_id}}&callback=movielookup"></script>
-</body>
-</html>

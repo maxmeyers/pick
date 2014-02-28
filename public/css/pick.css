@@ -2,6 +2,8 @@ body{
   background: #EAE2DF;
   font-family: 'Roboto', sans-serif;
   font-weight: 100;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 .jumbotron{
   background:#F7572F;

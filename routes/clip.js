@@ -13,7 +13,7 @@ exports.test = function(req, res) {
 	}
 	var user;
 	var genreString;
-	models.User.findById(req.session['uid']).exec(function(error, u) {
+	util.getCurrentUser(req, function(u) {
 		user = u;
 		if (!user.genres) {
 			user.genres = [];
@@ -48,7 +48,7 @@ exports.test = function(req, res) {
 						getClipAndRenderPage(firstTry)
 					})
 				} else {
-					res.redirect('/start')
+					res.redirect('/profile')
 				}
 
 			})		
@@ -142,12 +142,15 @@ exports.test = function(req, res) {
 								var explain = JSON.parse(body)['html']
 								explain = explain.split("<p>")[1]
 								res.render('clip', {
-									'title': title,
+									'movie_title': title,
 									'youtube_id': id,
 									'movie_id': movie_id,
 	                'image': 'http://icons.iconarchive.com/icons/visualpharm/ios7v2/48/Movie-Genres-Comedy-icon.png',
 	                'genres': genreString,
 	                'explain': explain,
+	                'clip': true,
+	                'title': 'Clip -- '+title,
+	                'username': user.username
 								})
 							})
 						});

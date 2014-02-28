@@ -7,10 +7,14 @@ exports.index = function(req, res) {
 		return;
 	}
 
+
+
 	models.User.findById(req.session['uid']).exec(function(error, user) {
 		console.log(user);
 		res.render('index', {
-			'username':user.username
+			'username':user.username,
+			'home': true,
+			'title': 'Welcome to Pick'
 		})
 	})
 }

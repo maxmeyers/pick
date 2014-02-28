@@ -1,16 +1,16 @@
-var starters = require('../starters.json')
 var models = require('../models')
 var genres = require('../genres.json')
+var util = require('../util')
 
-exports.start = function (req, res) {
+exports.profile = function (req, res) {
 	if (!req.session['uid']) {
-		res.redirect('/login?redirect=\/start');
+		res.redirect('/login?redirect=\/profile');
 		return;
 	}
 
-	models.User.findById(req.session['uid']).exec(function(error, u) {
+	util.getCurrentUser(req, function(u) {
 		var userGenres = u.genres;
-		var startGenres = [];
+		var profileGenres = [];
 		for (var key in genres) {
 			var genre = {"key":key, "name":genres[key]['name']}
 			genre['checked'] = false;
@@ -19,19 +19,21 @@ exports.start = function (req, res) {
 					genre['checked'] = true;
 				}
 			}
-			startGenres.push(genre)
+			profileGenres.push(genre)
 		}
-		console.log(startGenres)
-		res.render('start', {
-			genres: startGenres
+		res.render('profile', {
+			genres: profileGenres,
+			profile: true,
+			title: 'Profile',
+			username: u.username
 		})
 	})
 
 }
 
-exports.doStart = function (req, res) {
+exports.doProfile = function (req, res) {
 	if (!req.session['uid']) {
-		res.redirect('/login?redirect=\/start');
+		res.redirect('/login?redirect=\/profile');
 		return;
 	}
 

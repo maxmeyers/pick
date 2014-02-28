@@ -2,7 +2,9 @@ var models = require('../models')
 
 exports.login = function (req, res) {
 	res.render('login', {
-		'redirect': req.query.redirect
+		'redirect': req.query.redirect,
+		'login':true,
+		'title': 'Login to Pick'
 	})
 }
 

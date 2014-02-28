@@ -1,39 +1,23 @@
-<!doctype html>
-
-<html>
-<head>
-	<title>Welcome to Pick</title>	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	  <link href="/css/pick.css" rel = "stylesheet">
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/pick.js"></script>
-	<script src="js/index.js"></script>
-	<script src="js/bootstrap.min.js"></script>  
-</head>
-
-<body>
-	<div class="container">
 		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
 		<!-- p means paragraph -->
 		<div class="jumbotron">
      	 	<img src="http://s24.postimg.org/pvq4rcgx1/logo_idea.png" style="width: 25%; height:25%" alt="Welcome to Pick!" />
      	 	<!--<h1>Welcome to Pick!</h1>-->
      	 	<p> </p>
- 			<p>Pick helps you find a movie to watch with your friends and family. </p>
- 			<p style="color:white"> Watch movie trailers and rate them as Pick's intelligent deduction system guides you to the one that's just right!</p>
+ 			<p>Pick helps you find a movie to watch! </p>
+ 			<p style="color:white"> Watch and rate movie trailers as Pick learns what you like to find one that's just right!</p>
 		</div>
 			{{#if username}}
-			<h2>You are logged in as {{username}}. <a href="/clip">Start watching clips!</a></h2>
+			<h4>You are logged in as {{username}}. <p>From here, you can:
+			<ul>
+				<li><a href="/clip">Watch clips.</a></li><br>
+				<li><a href="/profile">Pick your genres.</a></li><br>
+				<li><a href="/ratinsg">See and change previous ratings.</a></li><br>
+			</ul>
+			</h4>
 			{{else}}
 				<button class ="login btn btn-default">Login</button>
 				<br/>
 				<br/>
 				<button class ="register btn btn-default">Register</button>
 			{{/if}}
-	</div>
-
-</body>
-</html>

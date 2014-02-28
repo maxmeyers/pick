@@ -1,8 +1,9 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
+var exphbs = require('express3-handlebars')
 var mongoose = require('mongoose');
+var fs = require('fs');
 
 var local_database_name = 'pick';
 var local_database_uri  = 'mongodb://localhost/' + local_database_name
@@ -12,7 +13,7 @@ mongoose.connect(database_uri);
 var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'))
-app.engine('handlebars', handlebars())
+app.engine('handlebars', exphbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -30,8 +31,10 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
+// handlebars.loadPartials()
+
 var index = require('./routes/index.js')
-var start = require('./routes/start.js')
+var profile = require('./routes/profile.js')
 var clip = require('./routes/clip.js')
 var rate = require('./routes/rate.js')
 var ratings = require('./routes/ratings.js')
@@ -40,8 +43,8 @@ var register = require('./routes/register.js')
 
 app.get('/', index.index);
 
-app.get('/start', start.start);
-app.post('/start', start.doStart);
+app.get('/profile', profile.profile);
+app.post('/profile', profile.doProfile);
 
 app.get('/login', login.login);
 app.post('/login', login.doLogin);

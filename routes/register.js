@@ -2,9 +2,9 @@ var models = require('../models')
 var request = require('request')
 
 exports.register = function (req, res) {
-	res.render('register')
-
-
+	res.render('register', {
+		'title': 'Register for Pick'
+	})
 }
 
 exports.doRegister = function (req, res) {
