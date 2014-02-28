@@ -21,6 +21,7 @@
 	<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
 	<button class="btn btn-default done-watching" id="0">Skip</button>
 	<button class="btn btn-default see-ratings" id="0">Ratings</button>
+	<h5>Current Genres: {{#if genres}}{{genres}}{{else}}None{{/if}} <a href="/profile">(Edit)</a></h5>
 </div>
 
 <div class="container">
@@ -29,7 +30,8 @@
 		{{#if explain}}{{{explain}}}{{/if}}
 	</div>
 
-
+	<div class="detail">
+	</div>
 
 	<div class="detail">
 		<h3>Actors</h3>
