@@ -55,6 +55,7 @@ var clip = function(req, res) {
 					testFilms(possibleMovieIds, 0, util.namesForKeys(user.genres), function(movie_id) {
 						getClipAndRenderPage(movie_id)					
 					}, function() {
+						console.log("nothing worked!")
 						getClipAndRenderPage(firstTry)
 					})
 				} else {
@@ -99,6 +100,9 @@ var clip = function(req, res) {
 			var genres = genre_string.split(', ');
 
 			var good = false;
+			if (acceptableGenreNames.length == 0) {
+				good = true;
+			}
 			for (var i in genres) {
 				for (var j in acceptableGenreNames) {
 					if (genres[i] === acceptableGenreNames[j]) {

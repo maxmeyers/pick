@@ -51,10 +51,7 @@ exports.doRegister = function (req, res) {
 							},
 							'method': 'POST',
 						}, function (error, result, body) {
-							console.log("filmaster result")
-							console.log(result)
-							console.log(body)
-							res.redirect('/clip')
+							res.redirect('/profile')
 						})
 					}
 				})
