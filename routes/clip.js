@@ -21,6 +21,12 @@ var clip = function(req, res) {
 		req['alt'] = false;
 	}
 
+	if (req.query['autoplay']) {
+		req['alt'] = true;
+	}
+
+
+
 	var user;
 	var genreString;
 	util.getCurrentUser(req, function(u) {

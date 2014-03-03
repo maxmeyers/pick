@@ -16,22 +16,15 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 <input type="hidden" id="movie_id" value="{{movie_id}}">
 
-<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
+<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0{{#if alt}}&autoplay=1{{/if}}" frameborder="0" allowfullscreen></iframe>
 
-
-{{#if alt}}
 <div class="container" style="text-align:center; padding-top:25px;">
-	<button class="btn btn-default done-watching" id="1">Hated it</button>
-	<button class="btn btn-default done-watching" id="3">Don't care</button>
-	<button class="btn btn-default done-watching" id="5">Loved it</button>
-</div>
-{{else}}
 	<button class="btn btn-default done-watching" id="1">★</button>
 	<button class="btn btn-default done-watching" id="2">★★</button>
 	<button class="btn btn-default done-watching" id="3">★★★</button>
 	<button class="btn btn-default done-watching" id="4">★★★★</button>
 	<button class="btn btn-default done-watching" id="5">★★★★★</button>
-{{/if}}
+</div>
 
 <div class="container" style="text-align:center; padding-top:25px;">
 	<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
