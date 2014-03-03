@@ -14,10 +14,14 @@ exports.profile = function (req, res) {
 		for (var key in genres) {
 			var genre = {"key":key, "name":genres[key]['name']}
 			genre['checked'] = false;
-			for (var i = 0; i < userGenres.length; i++) {
-				if (key === userGenres[i]) {
-					genre['checked'] = true;
+			if (userGenres.length) {
+				for (var i = 0; i < userGenres.length; i++) {
+					if (key === userGenres[i]) {
+						genre['checked'] = true;
+					}
 				}
+			} else {
+				genre['checked'] = true;
 			}
 			profileGenres.push(genre)
 		}
