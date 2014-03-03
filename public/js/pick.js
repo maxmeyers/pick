@@ -21,6 +21,7 @@ function initializePage() {
 
 	$('button.done-watching').click(function(event) {
 		var movie_id = $('#movie_id').attr("value");
+		ga('send', 'event', 'rating', 'click', event.target.id)
 		document.location = "/rate?movie_id="+movie_id+"&rating="+event.target.id;
 	});
 
