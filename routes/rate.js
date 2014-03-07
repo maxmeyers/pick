@@ -48,13 +48,18 @@ exports.rate = function(req, res) {
 			}
 
 			request( {
-				'uri': 'http://www.omdbapi.com/?i=tt'+movie_id
+						'uri':'http://api.themoviedb.org/3/find/tt'+movie_id+'?api_key=2a6cef5c6e0babed20a40c35e56881cd&external_source=imdb_id'
 			}, function (error, result, body) {
-				var info = JSON.parse(body);
+				var movie = JSON.parse(body)['movie_results'][0]
+
+				if (!movie) {
+					movie = JSON.parse(body)['tv_results'][0]
+				}
+
 				res.render('rate', {
-					'title': info['Title'],
+					'title': movie['title'],
 					'rating': rating,
-					'img_url': info['Poster']
+					'img_url': 'http://image.tmdb.org/t/p/original'+movie['poster_path']
 				})
 			});
 
