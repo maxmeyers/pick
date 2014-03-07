@@ -15,15 +15,38 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 
 <input type="hidden" id="movie_id" value="{{movie_id}}">
+	<div class="detail" style="padding-bottom:5px;">
+		<h4 style="text-align:center">{{movie_title}}</h4>
+		{{#if explain}}{{{explain}}}{{/if}}
+	</div>
+<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
 
-<iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0{{#if alt}}&autoplay=1{{/if}}" frameborder="0" allowfullscreen></iframe>
-
-<div class="container" style="text-align:center; padding-top:25px;">
-	<button class="btn btn-default done-watching" id="1">★</button>
+<div class="container" style="text-align:center;">
+<!-- 	<button class="btn btn-default done-watching" id="1">★</button>
 	<button class="btn btn-default done-watching" id="2">★★</button>
 	<button class="btn btn-default done-watching" id="3">★★★</button>
 	<button class="btn btn-default done-watching" id="4">★★★★</button>
-	<button class="btn btn-default done-watching" id="5">★★★★★</button>
+	<button class="btn btn-default done-watching" id="5">★★★★★</button> -->
+	<h5>Click a star to rate!</h5>
+	<div class="row" style="font-size:25px">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-2"><a href="/rate?movie_id={{movie_id}}&rating=1">★</a></div>
+		<div class="col-xs-2"><a href="/rate?movie_id={{movie_id}}&rating=2">★</a></div>
+		<div class="col-xs-2"><a href="/rate?movie_id={{movie_id}}&rating=3">★</a></div>
+		<div class="col-xs-2"><a href="/rate?movie_id={{movie_id}}&rating=4">★</a></div>
+		<div class="col-xs-2"><a href="/rate?movie_id={{movie_id}}&rating=5">★</a></div>
+		<div class="col-xs-1"></div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-2">1</div>
+		<div class="col-xs-2">2</div>
+		<div class="col-xs-2">3</div>
+		<div class="col-xs-2">4</div>
+		<div class="col-xs-2">5</div>
+		<div class="col-xs-1"></div>
+	</div>
 </div>
 
 <div class="container" style="text-align:center; padding-top:25px;">
@@ -34,36 +57,29 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 </div>
 
 <div class="container">
+
 	<div class="detail">
-		<h1>{{movie_title}}</h1>
-		{{#if explain}}{{{explain}}}{{/if}}
+		<h4>Actors</h4>
+		<p id="actors"></p>
 	</div>
 
 	<div class="detail">
+		<h4>Year</h4>
+		<p id="year"></p>
 	</div>
 
 	<div class="detail">
-		<h3>Actors</h3>
-		<h4 id="actors"></h4>
+		<h4>Director</h4>
+		<p id="director"></p>
 	</div>
 
 	<div class="detail">
-		<h3>Year</h3>
-		<h4 id="year"></h4>
-	</div>
-
-	<div class="detail">
-		<h3>Director</h3>
-		<h4 id="director"></h4>
-	</div>
-
-	<div class="detail">
-		<h3>Genres</h3>
-		<h4 id="genres"></h4>
+		<h4>Genres</h4>
+		<p id="genres"></p>
 	</div>
 
 	<div class = "detail">
-		<h3> </h3>
+		<h4> </h4>
 	</div>
 	<script src="js/clip.js"></script>
 	<script src="http://omdbapi.com/?i=tt{{movie_id}}&callback=movielookup"></script>

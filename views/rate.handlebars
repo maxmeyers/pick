@@ -1,28 +1,10 @@
-<!doctype html>
+<div style="text-align:center">
+	<p>You just gave <strong>{{title}}</strong> a {{rating}}/5 rating! Here comes another!</p>
+	<img src="{{img_url}}" style="width:50%"/>
+</div>
 
-<html>
-<head>
-	<title>Welcome to Pick</title>	
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/css/pick.css" rel = "stylesheet">
-	<script src="js/jquery-1.11.0.js"></script>
-	<script src="js/pick.js"></script>
-	<script src="js/bootstrap.min.js"></script>  
-</head>
-
-<body>
-	<div class="container">
-		<!-- h1 through h6 are headers. The higher the number, the smaller the header -->
-		<!-- p means paragraph -->
-		<div class="jumbotron">
-			<h1>This is a placeholder for the Rate page.
-			<a href="/clip">Watch another.</a>
-			<a href="/done">Pick this one.</a>
-		</div>
-	</div>
-
-</body>
-</html>
+<script>
+	setTimeout(function() {
+		window.location = {{#if redirect}}"{{redirect}}"{{else}}"/clip"{{/if}};
+	}, 1500);
+</script>

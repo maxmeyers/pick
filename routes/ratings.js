@@ -54,23 +54,26 @@ exports.ratings = function (req, res) {
 				var movie = JSON.parse(body)
 				console.log(movie_id)
 				ratings_dict[movie_id]['title'] = movie['Title']
+				ratings_dict[movie_id]['img_url'] = movie['Poster']
+				ratings_dict[movie_id]['imdb_rating'] = movie['imdbRating']
 
 				if (received == count) {
 					var ratings = [];
 					for (var id in ratings_dict) {
 						var rating = ratings_dict[id];
 						if (rating) {
-							ratings.push({
-								'title': rating['title'],
-								'rating': rating['rating'],
-								'film_id': rating['film_id']
-							})						
+							ratings.push(rating)						
 						}
 
 					}
 
-					ratings.sort(function(a,b) {
-						return a.title > (b.title);
+					ratings = ratings.sort(function(a,b) {
+						if (a.title > b.title) {
+							return 1;
+						} else if (a.title < b.title) {
+							return -1;
+						}
+						return 0;
 					});
 
 					res.render('ratings', {
@@ -98,7 +101,6 @@ exports.ratings = function (req, res) {
 			for (var film_id in ratings_dict) {
 				var rating = ratings_dict[film_id];
 				if (rating) {
-					console.log("film_id " + film_id)
 					request({
 						'uri':'http://omdbapi.com/?i=tt'+film_id,
 					}, movieCallback);			

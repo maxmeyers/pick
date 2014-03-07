@@ -46,7 +46,18 @@ exports.rate = function(req, res) {
 			if (error) {
 				console.log(error)
 			}
-			res.redirect(redirect)
+
+			request( {
+				'uri': 'http://www.omdbapi.com/?i=tt'+movie_id
+			}, function (error, result, body) {
+				var info = JSON.parse(body);
+				res.render('rate', {
+					'title': info['Title'],
+					'rating': rating,
+					'img_url': info['Poster']
+				})
+			});
+
 		});
 
 	}

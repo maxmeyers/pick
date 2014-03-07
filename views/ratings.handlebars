@@ -1,18 +1,20 @@
+<div class="container">
 	<div class="detail">
-		<h1>Current Ratings</h1>
+		<h2>Current Ratings</h2>
 	</div>
 {{#each film_ratings}}
-	<div class="container">
-		<h3><a href="/clip?film_id={{film_id}}">{{title}}</a></h3>
-		<button class="btn btn-default re-rate" id="1.{{film_id}}">{{star 1 film_id}}</button>
-		<button class="btn btn-default re-rate" id="2.{{film_id}}">{{star 2 film_id}}</button>
-		<button class="btn btn-default re-rate" id="3.{{film_id}}">{{star 3 film_id}}</button>
-		<button class="btn btn-default re-rate" id="4.{{film_id}}">{{star 4 film_id}}</button>
-		<button class="btn btn-default re-rate" id="5.{{film_id}}">{{star 5 film_id}}</button>
-		<br>
-		<button class="btn btn-default re-rate" id="500.{{film_id}}">Clear</button>
+	<div class="row">
+		<div class="col-xs-4">
+			<img style="width:100%; padding-top:5px; padding-bottom:5px;" src="{{img_url}}"/>
+		</div>
+		<div class="col-xs-8">
+			<a href="/clip?film_id={{film_id}}"><h4>{{title}}</h4></a>
+			<h5>Your Rating: {{rating}} / 5 <a href="/rate">(Clear)</a></h5>
+			<h5>IMDb Rating: {{imdb_rating}}</h5>
+		</div>
 	</div>
 {{else}}
 	<p>You don't have any ratings yet! <a href="/clip">Get started.</a></p>
 {{/each}}
+</div>
 </div>
