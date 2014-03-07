@@ -8,13 +8,14 @@
  			<p style="color:white"> Watch and rate movie trailers as Pick learns what you like to find one that's just right!</p>
 		</div>
 			{{#if username}}
-			<h4>You are logged in as {{username}}. <p>From here, you can:
+				<h4>You are logged in as {{username}}. 
+			{{else}}
+				<button class ="login btn btn-default">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class ="register btn btn-default">Register</button>
+			{{/if}}
+			<p>From here, you can:
 			<ul>
 				<li><a href="/clip">Watch clips.</a></li><br>
 				<li><a href="/profile">Pick your genres.</a></li><br>
 				<li><a href="/ratings">See and change previous ratings.</a></li><br>
 			</ul>
 			</h4>
-			{{else}}
-				<button class ="login btn btn-default">Login</button>&nbsp;&nbsp;&nbsp;&nbsp;<button class ="register btn btn-default">Register</button>
-			{{/if}}
