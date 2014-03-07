@@ -50,12 +50,15 @@ exports.ratings = function (req, res) {
 
 			function movieCallback (err, result, body) {
 				received = received + 1;
-				var movie_id = result.request.uri.href.split('=tt')[1]
-				var movie = JSON.parse(body)
-				console.log(movie_id)
-				ratings_dict[movie_id]['title'] = movie['Title']
-				ratings_dict[movie_id]['img_url'] = movie['Poster']
-				ratings_dict[movie_id]['imdb_rating'] = movie['imdbRating']
+				var movie_id = result.request.uri.href.split('/tt')[1].split('?')[0]
+				var movie = JSON.parse(body)['movie_results'][0]
+
+				if (!movie) {
+					movie = JSON.parse(body)['tv_results'][0]
+				}
+				ratings_dict[movie_id]['title'] = movie['title']
+				ratings_dict[movie_id]['img_url'] = 'http://image.tmdb.org/t/p/original'+movie['poster_path']
+				ratings_dict[movie_id]['imdb_rating'] = movie['vote_average']
 
 				if (received == count) {
 					var ratings = [];
@@ -102,7 +105,8 @@ exports.ratings = function (req, res) {
 				var rating = ratings_dict[film_id];
 				if (rating) {
 					request({
-						'uri':'http://omdbapi.com/?i=tt'+film_id,
+						// 'uri':'http://omdbapi.com/?i=tt'+film_id,
+						'uri':'http://api.themoviedb.org/3/find/tt'+film_id+'?api_key=2a6cef5c6e0babed20a40c35e56881cd&external_source=imdb_id',
 					}, movieCallback);			
 				}
 			};

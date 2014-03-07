@@ -66,18 +66,6 @@ app.get('/done', function(req, res) {
 
 app.get('/ratings', ratings.ratings);
 
-app.get('/proxy', function (req, res) {
-  var queryData = url.parse(req.url, true).query;
-
-  if (queryData.url) {
-    var x = request(queryData.url);
-    req.pipe(x).pipe(res);
-  } else {
-    res.writeHead(400, {"Content-Type": "text/plain"});
-    res.end("No url");
-  }
-});
-
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
