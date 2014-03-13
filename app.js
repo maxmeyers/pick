@@ -66,6 +66,24 @@ app.get('/done', function(req, res) {
 
 app.get('/ratings', ratings.ratings);
 
+app.get('/itunes', function(req, res) {
+	if (!req.query['title']) {
+		res.send(404);
+		return;
+	}
+	var uri = 'http://itunes.apple.com/search?media=movie&term='+ encodeURIComponent(req.query['title']) +'&country=US&entity=movie';
+	
+	request( {
+		'uri': uri
+	}, function (error, results, body) {
+		res.send(body);
+	})
+})
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+
+

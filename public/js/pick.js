@@ -29,10 +29,6 @@ function initializePage() {
 		document.location = "/ratings"
 	});
 
-	$('button.redirect-movie').click(function(event){
-		window.location = "http://www.netflix.com/";
-	});
-
 	$('button.re-rate').click(function(event) {
 		var button_id = event.target.id;
 		var rating = button_id.split('.')[0];

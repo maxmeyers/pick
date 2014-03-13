@@ -15,10 +15,10 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 
 
 <input type="hidden" id="movie_id" value="{{movie_id}}">
-	<div class="detail" style="padding-bottom:5px;">
-		<h4 style="text-align:center">{{movie_title}}</h4>
-		{{#if explain}}{{{explain}}}{{/if}}
-	</div>
+<div class="detail" style="padding-bottom:5px;">
+	<h4 style="text-align:center">{{movie_title}}</h4>
+	{{#if explain}}{{{explain}}}{{/if}}
+</div>
 <iframe width="100%" src="//www.youtube.com/embed/{{youtube_id}}?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>
 
 <div class="container" style="text-align:center;">
@@ -53,7 +53,7 @@ valueOf()+(h?'&utmxhash='+escape(h.substr(1)):'')+
 	<button class="btn btn-default redirect-movie" id="7">Let's watch it!</button>
 	<button class="btn btn-default done-watching" id="0">Skip</button>
 	<button class="btn btn-default see-ratings" id="0">Ratings</button>
-	<h5>Current Genres: {{#if genres}}{{genres}}{{else}}None{{/if}} <a href="/profile">(Edit)</a></h5>
+	<h5>Current Genres: {{#if genres}}{{genres}}{{else}}All{{/if}} <a href="/profile">(Edit)</a></h5>
 </div>
 
 <div class="container">
